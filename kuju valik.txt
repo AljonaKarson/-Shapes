@@ -1,0 +1,205 @@
+﻿using System;
+
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+        Start:
+            Console.WriteLine("Millist kujundid soovid?: ");
+            Console.WriteLine("ruut");
+            Console.WriteLine("ring");
+            Console.WriteLine("ristküülik");
+            Console.WriteLine("kolmnurk");
+            Console.WriteLine("----------------------------------------------------------------------");
+
+
+
+            string Kujund = Console.ReadLine();
+
+            switch (Kujund)
+
+
+            {
+
+
+                case "ruut":
+                    int ruuduSize;
+
+                    Console.WriteLine("Sisesta ruudu suurus: ");
+                    ruuduSize = Int32.Parse(Console.ReadLine());
+
+                    for (int row = 1; row <= ruuduSize; row++)
+                    {
+                        for (int column = 1; column < ruuduSize; column++)
+                        {
+                            string string1;
+
+                            string1 = (row == column || row + column == ruuduSize + 1) ? "*" : "*";
+
+
+
+                            Console.Write(string1);
+
+                        }
+                        Console.WriteLine();
+
+                    }
+                    int RuuduSide = ruuduSize;
+
+                    int Ümbermõõt = 4 * RuuduSide;
+                    int Pindala = RuuduSide * RuuduSide;
+
+                    Console.WriteLine("Ümbermõõt on {0} ja Pindala on {1} ühikut ", Ümbermõõt, Pindala);
+
+
+                Decide1:
+                    Console.WriteLine("Kas soovite sisestada uut kujundit- Jah, Ei?");
+                    string UserDecition = Console.ReadLine();
+
+                    switch (UserDecition.ToUpper())
+                    {
+                        case "JAH":
+                            goto Start;
+                        case "EI":
+                            break;
+                        default:
+                            Console.WriteLine("Vale vastus, proovige uuesti", UserDecition);
+                            goto Decide1;
+                    }
+
+                    break;
+
+                case "ring":
+                    {
+                        int KujundiSize;
+
+                        Console.WriteLine("Sisesta ringi suurus: ");
+                        KujundiSize = Int32.Parse(Console.ReadLine());
+
+                        Action<int, int> write = (xp, yp) => { Console.SetCursorPosition(xp, yp); Console.Write("*"); };
+
+                        int centerX = 20, centerY = 10, radius = 8, x = -radius;
+                        while (x < radius)
+                        {
+                            var y = (int)Math.Floor(Math.Sqrt(radius * radius - x * x));
+
+                            write(x + centerX, y + centerY);
+                            y = -y;
+                            write(x + centerX, y + centerY);
+                            x++;
+                        }
+                        
+
+                    Decide2:
+                        Console.WriteLine("Kas soovite sisestada uut kujundit- Jah, Ei?");
+                        string UserDecition2= Console.ReadLine();
+
+                        switch (UserDecition2.ToUpper())
+                        {
+                            case "JAH":
+                                goto Start;
+                            case "EI":
+                                break;
+                            default:
+                                Console.WriteLine("Vale vastus, proovige uuesti", UserDecition2);
+                                goto Decide2;
+                        }
+
+
+
+
+                    }
+
+
+            break;
+
+            
+                case "ristküülik":
+
+                    {
+
+                        Console.WriteLine("Sisesta ristküüliku kõrgust: ");
+                        int kõrgus0 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Siseste ristküüliku laiust: ");
+                        int laius = int.Parse(Console.ReadLine());
+
+
+                        for (int j = 0; j < kõrgus0; j++)
+                        {
+                            for (int i = 0; i < laius; i++)
+                            {
+
+                                Console.Write("*");
+
+                            }
+                            Console.WriteLine();
+                        }
+
+                        int RistküülikuÜmbermõõt = (kõrgus0 + laius) * 2;
+                        int RistküülikuPindala = kõrgus0 * laius;
+
+                        Console.WriteLine("Ümbermõõt on {0} ja Pindala on {1} ühikut ", RistküülikuÜmbermõõt, RistküülikuPindala);
+                    }
+
+                Decide:
+                    Console.WriteLine("Kas soovite sisestada uut kujundit- Jah, Ei?");
+                    string UserDecition1 = Console.ReadLine();
+
+                    switch (UserDecition1.ToUpper())
+                    {
+                        case "JAH":
+                            goto Start;
+                        case "EI":
+                            break;
+                        default:
+                            Console.WriteLine("Vale vastus, proovige uuesti", UserDecition1);
+                            goto Decide;
+                    }
+
+                    break;
+
+
+
+                case "kolmnurk":
+                    {
+
+                        Console.Write("Sisesta kolmnurka kõrgust: ");
+                        int kõrgus = int.Parse(Console.ReadLine());
+
+                      
+
+                        for (int i = 0; i < kõrgus; i++)
+                        {
+                            for (int j = 0; j <= i; j++)
+                            {
+                                Console.Write("*");
+                            }
+
+                            Console.WriteLine();
+
+
+                        }
+
+
+
+
+
+                        break;
+                    }
+
+
+            }
+
+
+        }
+    }
+
+
+
+
+
+
+ 
